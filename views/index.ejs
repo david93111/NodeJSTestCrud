@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MY APP</title>
+</head>
+<script src="main.js"></script>
+<link rel="stylesheet" href="main.css">
+<body>
+
+  <h2>Our Already registered books</h2>
+
+  <ul class="books">
+    <% for(var i=0; i<books.length; i++) {%>
+      <li class="book">
+        <H4>tittle: </H4><span><%= books[i].tittle %></span>
+        <H4>author: </H4><span><%= books[i].author %></span>
+        <H4>pages: </H4><span><%= books[i].pages %></span>
+        <H4>price: </H4><span><%= books[i].price %></span>
+        <button onclick="updatePrice('<%= books[i].tittle %>','<%= books[i].author %>',<%= books[i].price %>)"> Take this increment</button>
+        <button onclick="deleteBook('<%= books[i].tittle %>','<%= books[i].author %>')"> Lets screw up this book</button>
+      </li>
+    <% } %>
+  </ul>
+
+  <h2>Add new books</h2>
+
+  <form action="/books" method="POST">
+    <input type="text" placeholder="tittle" name="tittle">
+    <input type="text" placeholder="author" name="author">
+    <input type="number" placeholder="pages" name="pages">
+    <input type="number" placeholder="price" name="price">
+    <button type="submit">Submit</button>
+  </form>
+
+</body>
+</html>
